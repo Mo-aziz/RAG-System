@@ -1,6 +1,6 @@
 # Multimodal RAG System for MkDocs Documentation
 
-This project implements a **Retrieval-Augmented Generation (RAG) system** for [MkDocs](https://github.com/mkdocs/mkdocs), an open-source static site generator for project documentation. The system allows users to query the MkDocs documentation and retrieve answers from the docs, with support for **multimodal queries** (text + images) via embeddings.
+This project implements a **Retrieval-Augmented Generation (RAG) system** for [MkDocs](https://github.com/mkdocs/mkdocs), an open-source static site generator for project documentation. The system allows users to query the MkDocs documentation and retrieve answers from the docs, with support for **multimodal queries** (text + images) via embeddings. Done on Google Colab the link is in the end of README .
 
 ## Features
 
@@ -11,12 +11,6 @@ This project implements a **Retrieval-Augmented Generation (RAG) system** for [M
 - Simple **HTML frontend** for querying text and displaying image results.
 
 ---
-
-## 1. Installation
-
-# Clone repository
-git clone https://github.com/yourusername/mkdocs-rag.git
-cd mkdocs-rag
 
 # Install dependencies
 pip install sentence-transformers==2.6.1
