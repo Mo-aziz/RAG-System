@@ -1,0 +1,10 @@
+sentence-transformers==2.6.1
+chromadb==0.5.3
+markdown
+beautifulsoup4
+nltk
+streamlit
+transformers
+Pillow
+fastapi
+uvicorn
