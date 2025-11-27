@@ -30,7 +30,7 @@ Method: Sentence-based sliding window
 Parameters: 5 sentences per chunk, 2-sentence overlap
 
 Reason: Preserves context across chunks while avoiding overly large segments that can dilute embeddings.
-pip install fastapi uvicorn
+
 
 # Chunks Cleaning
 
