@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multimodal Search</title>
+</head>
+<body>
+    <h2>Search Text + Image</h2>
+    <input type="text" id="query" placeholder="Enter query">
+    <button onclick="search()">Search</button>
+
+    <div id="results" style="margin-top:20px;"></div>
+
+    <script>
+        async function search() {
+            const query = document.getElementById("query").value.trim();
+            if (!query) {
+                alert("Please enter a query.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("query", query);
+            formData.append("n_results", 5);
+
+            // Replace this URL with your Cloudflared public URL (no trailing slash)
+            const url = "https://heated-explained-satisfied-ohio.trycloudflare.com";  
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const err = await response.json();
+                    alert("Error: " + (err.error || response.statusText));
+                    return;
+                }
+
+                const data = await response.json();
+                const container = document.getElementById("results");
+                container.innerHTML = "";
+
+                data.results.forEach(item => {
+                    if (item.type === "text") {
+                        const p = document.createElement("p");
+                        p.innerHTML = `<b>Text:</b> ${item.text}<br><i>Source:</i> ${item.source}`;
+                        container.appendChild(p);
+                    } else if (item.type === "image") {
+                        const img = document.createElement("img");
+                        img.src = `${url.replace("/search", "")}${item.path}`; // Serve image via static route
+                        img.width = 300;
+                        img.style.margin = "10px 0";
+                        container.appendChild(img);
+
+                        const caption = document.createElement("p");
+                        caption.innerHTML = `<i>Source:</i> ${item.source}`;
+                        container.appendChild(caption);
+                    }
+                });
+
+            } catch (err) {
+                console.error(err);
+                alert("Failed to fetch results. Make sure your FastAPI app is running and the Cloudflared URL is correct.");
+            }
+        }
+    </script>
+</body>
+</html>
