@@ -89,8 +89,6 @@ print(answer)
  
 # Project Structure
   mkdocs-rag/
-- mkdocs/                  # Cloned MkDocs repo
--  chromadb/                # Vector DB persistence
 - mkdocs_images_extracted/ # Extracted images
 - fastapi_app.py           # API backend
 - index.html               # Web frontend
